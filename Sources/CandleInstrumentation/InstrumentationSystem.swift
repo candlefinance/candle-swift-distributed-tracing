@@ -12,7 +12,7 @@
 //
 //===----------------------------------------------------------------------===//
 
-import ServiceContextModule
+import CandleServiceContextModule
 
 /// `InstrumentationSystem` is a global facility where the default cross-cutting tool can be configured.
 /// It is set up just once in a given program to select the desired ``Instrument`` implementation.

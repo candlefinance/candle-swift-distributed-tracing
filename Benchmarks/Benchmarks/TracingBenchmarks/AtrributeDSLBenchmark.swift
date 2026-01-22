@@ -13,7 +13,7 @@
 //===----------------------------------------------------------------------===//
 
 import Benchmark
-import Tracing
+import CandleTracing
 
 let benchmarks = {
     let defaultMetrics: [BenchmarkMetric] = [

@@ -25,11 +25,11 @@
 //
 //===----------------------------------------------------------------------===//
 
-import Logging
-import NIO
+import CandleLogging
+import CandleNIO
 import OpenTelemetry
 import OtlpGRPCSpanExporting
-import Tracing
+import CandleTracing
 
 // ==== ----------------------------------------------------------------------------------------------------------------
 

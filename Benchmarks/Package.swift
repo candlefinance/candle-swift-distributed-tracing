@@ -29,7 +29,7 @@ let package = Package(
             name: "TracingBenchmarks",
             dependencies: [
                 .product(name: "Benchmark", package: "package-benchmark"),
-                .product(name: "Tracing", package: "swift-distributed-tracing"),
+                .product(name: "CandleTracing", package: "swift-distributed-tracing"),
             ],
             path: "Benchmarks/TracingBenchmarks",
             plugins: [

@@ -12,7 +12,7 @@
 //
 //===----------------------------------------------------------------------===//
 
-@_exported import Instrumentation
+@_exported import CandleInstrumentation
 
 @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
 extension InstrumentationSystem {

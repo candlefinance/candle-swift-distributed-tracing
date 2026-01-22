@@ -12,7 +12,7 @@
 //
 //===----------------------------------------------------------------------===//
 
-import ServiceContextModule
+import CandleServiceContextModule
 
 /// Conforming types are used to extract values from a specific `Carrier`.
 public protocol Extractor: Sendable {

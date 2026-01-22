@@ -4,8 +4,8 @@ import PackageDescription
 let package = Package(
     name: "swift-distributed-tracing",
     products: [
-        .library(name: "Instrumentation", targets: ["Instrumentation"]),
-        .library(name: "Tracing", targets: ["Tracing"]),
+        .library(name: "CandleInstrumentation", targets: ["CandleInstrumentation"]),
+        .library(name: "CandleTracing", targets: ["CandleTracing"]),
     ],
     dependencies: [
         .package(url: "https://github.com/candlefinance/swift-service-context.git", branch: "fix-candle-1.2.1")
@@ -15,15 +15,15 @@ let package = Package(
         // MARK: Instrumentation
 
         .target(
-            name: "Instrumentation",
+            name: "CandleInstrumentation",
             dependencies: [
-                .product(name: "ServiceContextModule", package: "swift-service-context")
+                .product(name: "CandleServiceContextModule", package: "swift-service-context")
             ]
         ),
         .testTarget(
             name: "InstrumentationTests",
             dependencies: [
-                .target(name: "Instrumentation")
+                .target(name: "CandleInstrumentation")
             ]
         ),
 
@@ -31,17 +31,17 @@ let package = Package(
         // MARK: Tracing
 
         .target(
-            name: "Tracing",
+            name: "CandleTracing",
             dependencies: [
-                .product(name: "ServiceContextModule", package: "swift-service-context"),
-                .target(name: "Instrumentation"),
-                .target(name: "_CWASI", condition: .when(platforms: [.wasi])),
+                .product(name: "CandleServiceContextModule", package: "swift-service-context"),
+                .target(name: "CandleInstrumentation"),
+                .target(name: "Candle_CWASI", condition: .when(platforms: [.wasi])),
             ]
         ),
         .testTarget(
             name: "TracingTests",
             dependencies: [
-                .target(name: "Tracing")
+                .target(name: "CandleTracing")
             ]
         ),
 
@@ -50,7 +50,7 @@ let package = Package(
 
         // Provides C shims for compiling to wasm
         .target(
-            name: "_CWASI",
+            name: "Candle_CWASI",
             dependencies: []
         ),
     ]

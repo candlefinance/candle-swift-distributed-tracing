@@ -12,8 +12,8 @@
 //
 //===----------------------------------------------------------------------===//
 
-@_spi(Locking) import Instrumentation
-import Tracing
+@_spi(Locking) import CandleInstrumentation
+import CandleTracing
 import _TracingBenchmarkTools
 
 // swift-format-ignore: DontRepeatTypeInStaticProperties
@@ -73,9 +73,9 @@ enum DSLBenchmarks {
         ),
     ]
 
-    fileprivate static let span: LockedValueBox<(any Tracing.Span)?> = .init(nil)
+    fileprivate static let span: LockedValueBox<(any CandleTracing.Span)?> = .init(nil)
 
-    fileprivate static func runTimesWithSpan(_ times: Int, work: (any Tracing.Span) -> Void) {
+    fileprivate static func runTimesWithSpan(_ times: Int, work: (any CandleTracing.Span) -> Void) {
         self.span.withValue { span in
             for _ in 0..<times {
                 work(span!)

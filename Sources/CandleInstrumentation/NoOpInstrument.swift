@@ -12,7 +12,7 @@
 //
 //===----------------------------------------------------------------------===//
 
-import ServiceContextModule
+import CandleServiceContextModule
 
 /// A "no op" implementation of an ``Instrument``.
 public struct NoOpInstrument: Instrument {

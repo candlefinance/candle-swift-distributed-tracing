@@ -12,8 +12,8 @@
 //
 //===----------------------------------------------------------------------===//
 
-@_exported import Instrumentation
-@_exported import ServiceContextModule
+@_exported import CandleInstrumentation
+@_exported import CandleServiceContextModule
 
 /// Start a new ``Span`` using the global bootstrapped tracer reimplementation.
 ///

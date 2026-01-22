@@ -12,8 +12,8 @@
 //
 //===----------------------------------------------------------------------===//
 
-@_exported import Instrumentation
-@_exported import ServiceContextModule
+@_exported import CandleInstrumentation
+@_exported import CandleServiceContextModule
 
 /// A tracer protocol intended to support Swift 5.6 specifically.
 ///
@@ -64,7 +64,7 @@ public protocol LegacyTracer: Instrument {
         function: String,
         file fileID: String,
         line: UInt
-    ) -> any Tracing.Span
+    ) -> any CandleTracing.Span
 
     /// Export all ended spans to the configured backend that have not yet been exported.
     ///
@@ -120,7 +120,7 @@ extension LegacyTracer {
         function: String = #function,
         file fileID: String = #fileID,
         line: UInt = #line
-    ) -> any Tracing.Span {
+    ) -> any CandleTracing.Span {
         self.startAnySpan(
             operationName,
             context: context(),
@@ -167,7 +167,7 @@ extension LegacyTracer {
         function: String = #function,
         file fileID: String = #fileID,
         line: UInt = #line
-    ) -> any Tracing.Span {
+    ) -> any CandleTracing.Span {
         self.startAnySpan(
             operationName,
             context: context(),
@@ -212,7 +212,7 @@ extension LegacyTracer {
         function: String = #function,
         file fileID: String = #fileID,
         line: UInt = #line,
-        _ operation: (any Tracing.Span) throws -> T
+        _ operation: (any CandleTracing.Span) throws -> T
     ) rethrows -> T {
         let span = self.startAnySpan(
             operationName,
@@ -265,7 +265,7 @@ extension LegacyTracer {
         function: String = #function,
         file fileID: String = #fileID,
         line: UInt = #line,
-        _ operation: (any Tracing.Span) throws -> T
+        _ operation: (any CandleTracing.Span) throws -> T
     ) rethrows -> T {
         try self.withAnySpan(
             operationName,
@@ -316,7 +316,7 @@ extension LegacyTracer {
         function: String = #function,
         file fileID: String = #fileID,
         line: UInt = #line,
-        _ operation: (any Tracing.Span) async throws -> T
+        _ operation: (any CandleTracing.Span) async throws -> T
     ) async rethrows -> T {
         let span = self.startAnySpan(
             operationName,
@@ -351,7 +351,7 @@ extension LegacyTracer {
         function: String = #function,
         file fileID: String = #fileID,
         line: UInt = #line,
-        _ operation: (any Tracing.Span) async throws -> T
+        _ operation: (any CandleTracing.Span) async throws -> T
     ) async rethrows -> T {
         let span = self.startAnySpan(
             operationName,
@@ -407,7 +407,7 @@ extension LegacyTracer {
         function: String = #function,
         file fileID: String = #fileID,
         line: UInt = #line,
-        _ operation: (any Tracing.Span) async throws -> T
+        _ operation: (any CandleTracing.Span) async throws -> T
     ) async rethrows -> T {
         let span = self.startAnySpan(
             operationName,
@@ -441,7 +441,7 @@ extension LegacyTracer {
         function: String = #function,
         file fileID: String = #fileID,
         line: UInt = #line,
-        _ operation: (any Tracing.Span) async throws -> T
+        _ operation: (any CandleTracing.Span) async throws -> T
     ) async rethrows -> T {
         let span = self.startAnySpan(
             operationName,
@@ -497,13 +497,13 @@ extension Tracer {
     ///   - line: The file line where the span was started.
     public func startAnySpan<Instant: TracerInstant>(
         _ operationName: String,
-        context: @autoclosure () -> ServiceContextModule.ServiceContext,
-        ofKind kind: Tracing.SpanKind,
+        context: @autoclosure () -> CandleServiceContextModule.ServiceContext,
+        ofKind kind: CandleTracing.SpanKind,
         at instant: @autoclosure () -> Instant,
         function: String,
         file fileID: String,
         line: UInt
-    ) -> Tracing.Span {
+    ) -> CandleTracing.Span {
         self.startSpan(
             operationName,
             context: context(),
@@ -555,7 +555,7 @@ extension Tracer {
         function: String = #function,
         file fileID: String = #fileID,
         line: UInt = #line,
-        _ operation: (any Tracing.Span) throws -> T
+        _ operation: (any CandleTracing.Span) throws -> T
     ) rethrows -> T {
         try self.withSpan(
             operationName,
@@ -613,7 +613,7 @@ extension Tracer {
         function: String = #function,
         file fileID: String = #fileID,
         line: UInt = #line,
-        @_inheritActorContext @_implicitSelfCapture _ operation: (any Tracing.Span) async throws -> T
+        @_inheritActorContext @_implicitSelfCapture _ operation: (any CandleTracing.Span) async throws -> T
     ) async rethrows -> T {
         try await self.withSpan(
             operationName,
@@ -641,7 +641,7 @@ extension Tracer {
         function: String = #function,
         file fileID: String = #fileID,
         line: UInt = #line,
-        @_inheritActorContext @_implicitSelfCapture _ operation: (any Tracing.Span) async throws -> T
+        @_inheritActorContext @_implicitSelfCapture _ operation: (any CandleTracing.Span) async throws -> T
     ) async rethrows -> T {
         try await self.withSpan(
             operationName,

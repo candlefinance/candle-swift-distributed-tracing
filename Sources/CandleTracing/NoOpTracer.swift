@@ -12,8 +12,8 @@
 //
 //===----------------------------------------------------------------------===//
 
-@_exported import Instrumentation
-@_exported import ServiceContextModule
+@_exported import CandleInstrumentation
+@_exported import CandleServiceContextModule
 
 /// Tracer that ignores all operations, used when no tracing is required.
 @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)  // for TaskLocal ServiceContext
@@ -30,7 +30,7 @@ public struct NoOpTracer: LegacyTracer {
         function: String,
         file fileID: String,
         line: UInt
-    ) -> any Tracing.Span {
+    ) -> any CandleTracing.Span {
         NoOpSpan(context: context())
     }
 
@@ -50,7 +50,7 @@ public struct NoOpTracer: LegacyTracer {
         // no-op
     }
 
-    public struct NoOpSpan: Tracing.Span {
+    public struct NoOpSpan: CandleTracing.Span {
         public let context: ServiceContext
         public var isRecording: Bool {
             false

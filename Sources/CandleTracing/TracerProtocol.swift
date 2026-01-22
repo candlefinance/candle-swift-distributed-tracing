@@ -12,8 +12,8 @@
 //
 //===----------------------------------------------------------------------===//
 
-@_exported import Instrumentation
-@_exported import ServiceContextModule
+@_exported import CandleInstrumentation
+@_exported import CandleServiceContextModule
 
 // ==== -----------------------------------------------------------------------
 // MARK: Tracer protocol
@@ -24,7 +24,7 @@
 @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)  // for TaskLocal ServiceContext
 public protocol Tracer: LegacyTracer {
     /// The concrete type of span this tracer will be producing/
-    associatedtype Span: Tracing.Span
+    associatedtype Span: CandleTracing.Span
 
     /// Start a new ``Span`` with the given `ServiceContext`.
     ///

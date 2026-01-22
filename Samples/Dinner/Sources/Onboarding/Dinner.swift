@@ -25,7 +25,7 @@
 //
 //===----------------------------------------------------------------------===//
 
-import Tracing
+import CandleTracing
 
 func makeDinner() async throws -> Meal {
     try await InstrumentationSystem.tracer.withSpan("makeDinner") { _ in

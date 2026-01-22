@@ -12,8 +12,8 @@
 //
 //===----------------------------------------------------------------------===//
 
-@_exported import Instrumentation
-@_exported import ServiceContextModule
+@_exported import CandleInstrumentation
+@_exported import CandleServiceContextModule
 
 #if canImport(Darwin)
 import Darwin
@@ -30,7 +30,7 @@ import WASILibc
 #endif
 
 #if os(WASI)
-import _CWASI
+import Candle_CWASI
 #endif
 
 public protocol TracerInstant: Comparable, Hashable, Sendable {
