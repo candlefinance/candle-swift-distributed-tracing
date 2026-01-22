@@ -2,7 +2,7 @@
 import PackageDescription
 
 let package = Package(
-    name: "candle-swift-distributed-tracing",
+    name: "swift-distributed-tracing",
     products: [
         .library(name: "CandleInstrumentation", targets: ["CandleInstrumentation"]),
         .library(name: "CandleTracing", targets: ["CandleTracing"]),
@@ -17,7 +17,7 @@ let package = Package(
         .target(
             name: "CandleInstrumentation",
             dependencies: [
-                .product(name: "CandleServiceContextModule", package: "candle-swift-service-context")
+                .product(name: "CandleServiceContextModule", package: "swift-service-context")
             ]
         ),
         .testTarget(
@@ -33,7 +33,7 @@ let package = Package(
         .target(
             name: "CandleTracing",
             dependencies: [
-                .product(name: "CandleServiceContextModule", package: "candle-swift-service-context"),
+                .product(name: "CandleServiceContextModule", package: "swift-service-context"),
                 .target(name: "CandleInstrumentation"),
                 .target(name: "_Candle_CWASI", condition: .when(platforms: [.wasi])),
             ]
