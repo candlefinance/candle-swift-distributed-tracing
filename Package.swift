@@ -2,7 +2,7 @@
 import PackageDescription
 
 let package = Package(
-    name: "swift-distributed-tracing",
+    name: "candle-swift-distributed-tracing",
     products: [
         .library(name: "CandleInstrumentation", targets: ["CandleInstrumentation"]),
         .library(name: "CandleTracing", targets: ["CandleTracing"]),
