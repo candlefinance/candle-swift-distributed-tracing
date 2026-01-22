@@ -35,7 +35,7 @@ let package = Package(
             dependencies: [
                 .product(name: "CandleServiceContextModule",package: "candle-swift-service-context"),
                 .target(name: "CandleInstrumentation"),
-                .target(name: "_Candle_CWASI", condition: .when(platforms: [.wasi])),
+                .target(name: "Candle_CWASI", condition: .when(platforms: [.wasi])),
             ]
         ),
         .testTarget(
@@ -50,7 +50,7 @@ let package = Package(
 
         // Provides C shims for compiling to wasm
         .target(
-            name: "_Candle_CWASI",
+            name: "Candle_CWASI",
             dependencies: []
         ),
     ]
