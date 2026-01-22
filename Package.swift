@@ -8,7 +8,7 @@ let package = Package(
         .library(name: "CandleTracing", targets: ["CandleTracing"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/candlefinance/swift-service-context.git", name: "candle-swift-service-context", branch: "fix-candle-1.2.1")
+        .package(name: "candle-swift-service-context", url: "https://github.com/candlefinance/swift-service-context.git", branch: "fix-candle-1.2.1")
     ],
     targets: [
         // ==== --------------------------------------------------------------------------------------------------------
