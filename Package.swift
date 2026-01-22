@@ -17,7 +17,7 @@ let package = Package(
         .target(
             name: "CandleInstrumentation",
             dependencies: [
-                .product(name: "CandleServiceContextModule", package: "swift-service-context")
+                .product(name: "CandleServiceContextModule",package: "candle-swift-service-context")
             ]
         ),
         .testTarget(
@@ -33,7 +33,7 @@ let package = Package(
         .target(
             name: "CandleTracing",
             dependencies: [
-                .product(name: "CandleServiceContextModule", package: "swift-service-context"),
+                .product(name: "CandleServiceContextModule",package: "candle-swift-service-context"),
                 .target(name: "CandleInstrumentation"),
                 .target(name: "_Candle_CWASI", condition: .when(platforms: [.wasi])),
             ]
