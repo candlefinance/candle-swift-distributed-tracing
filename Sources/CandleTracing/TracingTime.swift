@@ -30,7 +30,7 @@ import WASILibc
 #endif
 
 #if os(WASI)
-import Candle_CWASI
+import _Candle_CWASI
 #endif
 
 public protocol TracerInstant: Comparable, Hashable, Sendable {
